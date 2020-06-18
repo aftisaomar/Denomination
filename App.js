@@ -1,11 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Denomination from './components/Denomination';
 
-export default function App() {
+// Redux
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+import reducer from './reducers/index';
+
+const store = createStore(reducer);
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <Provider store={store}>
+      <Denomination />
+    </Provider>
+    
   );
 }
 
@@ -17,3 +27,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
